@@ -3,25 +3,37 @@ import {  useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import  axios  from "axios"
 import { BACKEND_URL } from "../Config"
+import { Gender } from "./Gender"
+import Checkbox from '@mui/material/Checkbox';
+
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export const Auth = ({type}: {type: "Sign Up" | "Sign In"}) => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
+    const [rememberMe, setRememberMe] = useState(false)
     const [postInputs, setPostInputs] = useState<SignupInput>({
         name: "",
         email: "",
-        password: ""
+        password: "",
+        gender: ""
     })
     async function sendRequest(){
         try {
             console.log("Sending request");
             setLoading(true);
-            const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type == "Sign Up"? "signup": "signin"}`, postInputs);
+            const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type == "Sign Up"? "signup": "signin"}`, postInputs, { headers: { "Content-Type": "application/json" } });
             console.log(response);
             const jwt = response.data.jwt;
+            const userData = response.data.userData;
             console.log(jwt);
-            
-            localStorage.setItem("token","Bearer " + jwt);
+            console.log(userData)
+
+            if (rememberMe){
+                localStorage.setItem("token","Bearer " + jwt);
+                localStorage.setItem("userData", JSON.stringify(userData ));
+            } else {sessionStorage.setItem("token","Bearer " + jwt);}
             setLoading(false);
             navigate("/blogs");
             return loading;
@@ -30,14 +42,21 @@ export const Auth = ({type}: {type: "Sign Up" | "Sign In"}) => {
         }
 
     }
-    return <div className="h-screen flex justify-center flex-col">
+    console.log(rememberMe)
+
+    function handleRememberMe(){
+        {rememberMe == true ? setRememberMe(false) : setRememberMe(true)}
+        console.log(rememberMe)
+
+    }
+    return <div className="h-screen flex justify-center flex-col px-4">
         <div className="flex justify-center ">
             <div>
             <div className="px-10">
-                <div className="text-3xl font-extrabold  ">
+                <div className="text-3xl font-extrabold text-center ">
                         Create an account
                 </div>
-                <div className="text-slate-500">
+                <div className="text-slate-500 text-center">
                     <Link to={type == "Sign Up"? "/signin" : "/signup"}>{type == "Sign Up"? "Already have an account? Login!" : "Don't have an account? Sign Up"}</Link>
                 </div>
             </div>
@@ -60,6 +79,17 @@ export const Auth = ({type}: {type: "Sign Up" | "Sign In"}) => {
                         password: e.target.value
                     }))
                 }} />
+                {type == "Sign Up"? <Gender onGenderChange={(gender) => {
+                    setPostInputs(c => ({
+                        ...c,
+                        gender: gender
+                    }));
+                }}/> : ""}
+                
+                <div>
+                    <Checkbox checked={rememberMe} onClick={handleRememberMe} {...label} />
+                        Remember Me
+                </div>
                 <button onClick={sendRequest} type="button" className=" mt-6 w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none
                  focus:ring-4 focus:ring-gray-300  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">{type == "Sign Up" ? "Sign Up": "Sign In"}</button>
 

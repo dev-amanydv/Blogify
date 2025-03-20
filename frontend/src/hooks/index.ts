@@ -7,8 +7,10 @@ export interface Blog {
             "title": string,
             "id": string,
             "author": {
-                "name": string
-            }
+                "name": string,
+                "profilePic": string
+            },
+            "blogCreatedTime": string
 }
 
 export const useBlog = ({id}: {id: string}) => {
@@ -47,3 +49,18 @@ export const useBlogs = () => {
     }, [])
     return {loading,blogs}
 }
+
+
+export const useUser = () => {
+    const [user, setUser] = useState<{ name?: string; profilePic?: string }>({});;
+  
+    useEffect(() => {
+      const storedUser = localStorage.getItem("userData");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    }, []);
+  
+    return user;
+  };
+  

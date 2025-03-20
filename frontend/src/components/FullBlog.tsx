@@ -1,26 +1,30 @@
 import { Blog } from "../hooks";
 import { Appbar } from "./Appbar";
-import { Avatar } from "./BlogCard";
+import { AuthorAvatar, Avatar } from "./BlogCard";
+import { formatDistanceToNow, format } from "date-fns";
+
 
 export const FullBlog = ({ blog }: { blog: Blog }) => {
+  const formattedDate = format(new Date(blog.blogCreatedTime), "d MMM yyyy");     
+
   return (
     <div>
       <Appbar />
       <div className="flex justify-center">
-        <div className="grid gap-10 grid-cols-12 px-10 w-full pt-12 max-w-screen-2xl ">
-          <div className=" grid col-span-8">
-            <div className="text-5xl font-extrabold"> {blog.title} </div>
-            <div className="text-slate-500 pt-2">Posted on 14th February 2025</div>
-            <div className="text-md font-light pt-5">{blog.content}</div>
+        <div className="grid gap-10 grid-cols-12 px-6 w-full pt-12 max-w-screen-2xl">
+          <div className="col-span-12 sm:col-span-8">
+              <div className="text-5xl font-extrabold"> {blog.title} </div>
+              <div className="text-slate-500 pt-2">Posted on {formattedDate}</div>
+              <div className="text-md font-light pt-5">{blog.content}</div>
           </div>
 
-            <div className=" col-span-4">
-                <div className="text-slate-700 text-lg">
+          <div className="col-span-12 mt-4 sm:col-span-4 md:mt-6 ">
+                <div className="text-slate-700 text-lg font-bold">
                 Author 
                 </div>
-                <div className="flex w-full">
-                    <div className="pr-4 flex flex-col justify-center ">
-                        <Avatar size={"big"} name={blog.author.name || "Anonymous"}/>
+                <div className="flex flex-row sm:flex-row w-full items-center sm:items-start">
+                    <div className="pr-4 inline-block  ">
+                        <AuthorAvatar size={"big"} profilePic={blog.author.profilePic} name={blog.author.name || "Anonymous"}/>
                     </div>
 
                     <div>
@@ -35,7 +39,7 @@ export const FullBlog = ({ blog }: { blog: Blog }) => {
                     
                 </div>
                 
-            </div>
+          </div>
         </div>
       </div>
     </div>
