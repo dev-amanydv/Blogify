@@ -1,7 +1,7 @@
 import { Blog } from "../hooks";
 import { Appbar } from "./Appbar";
-import { AuthorAvatar, Avatar } from "./BlogCard";
-import { formatDistanceToNow, format } from "date-fns";
+import { AuthorAvatar} from "./BlogCard";
+import {  format } from "date-fns";
 
 
 export const FullBlog = ({ blog }: { blog: Blog }) => {

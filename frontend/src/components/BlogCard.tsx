@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { formatDistanceToNow,format } from "date-fns";
+import { format } from "date-fns";
 
 interface BlogCradProps {
     id:string,
@@ -73,6 +73,12 @@ export function Avatar ({name,profilePic,size="small" }: {name:string,profilePic
     const nameAvatar =  name.includes(" ")? name1[0] + name2[0] : name[0]
 
     return <div className={`relative inline-flex items-center justify-center ${size == "small"? "h-7 w-7": "h-10 w-10"} overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600`}>
-    <span className="font-medium text-xs text-gray-600 dark:text-gray-300"><img src={`${profilePic}`} alt="" /></span>
+     {profilePic ? (
+        <img src={profilePic} alt={name} className="h-full w-full object-cover" />
+      ) : (
+        <span className="font-medium text-xs text-gray-600 dark:text-gray-300">
+          {nameAvatar.toUpperCase()}
+        </span>
+      )}
 </div>
 }
