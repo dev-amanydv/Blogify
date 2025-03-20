@@ -36,7 +36,6 @@ export const blogRouter = new Hono<{
       })
     }
   
-     next()
     } catch (error) {
         c.status(403);
         return c.json({
@@ -73,7 +72,8 @@ export const blogRouter = new Hono<{
     
     
         return c.json({
-            id: blog.id
+            id: blog.id,
+            
         })
         
     } catch (error) {
@@ -135,9 +135,11 @@ export const blogRouter = new Hono<{
             content: true,
             title: true,
             id: true,
+            blogCreatedTime: true,
             author: {
                 select: {
-                    name: true
+                    name: true,
+                    profilePic: true
                 }
             }
         }
@@ -160,10 +162,12 @@ export const blogRouter = new Hono<{
             select: {
                 title: true,
                 content: true,
+                blogCreatedTime: true,
                 id: true,
                 author: {
                     select: {
-                        name: true
+                        name: true,
+                        profilePic: true
                     }
                 }
             }

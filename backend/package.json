@@ -8,6 +8,7 @@
     "@amanhere/medium-common": "^1.0.0",
     "@prisma/client": "^6.5.0",
     "@prisma/extension-accelerate": "^1.2.2",
+    "date-fns": "^4.1.0",
     "hono": "^4.7.4",
     "prisma": "^6.5.0",
     "zod": "^3.24.2"

@@ -27,21 +27,28 @@ userRouter.post('/signup',async (c) => {
     try {
   
     //zod and passwordhashing
+    //const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${body.email}`;
+    //const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${body.email}`;
+    const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=ay`;
+    const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=at`;
     const user = await prisma.user.create({
       data: {
         email: body.email,
         password: body.password,
-        name: body.name
+        name: body.name,
+        gender: body.gender,
+        profilePic: body.gender.toLowerCase() == 'male'? boyProfilePic: girlProfilePic
       }
     })
     const token = await sign({ id: user.id }, c.env.JWT_SECRET);
     return c.json({
-      jwt: token
+      jwt: token,
+      userData: user
     })
       
     } catch (error) {
       c.status(411);
-      return c.text('User already exists with this email')
+      return c.text('Error while Signup')
     }
   
     
@@ -73,9 +80,10 @@ userRouter.post('/signin',async (c) => {
         c.status(403);
         return c.json({ error: "Incorrect credentials" });
       }
-      const jwt = await sign({id:user.id}, c.env.JWT_SECRET);
+      const token = await sign({id:user.id}, c.env.JWT_SECRET);
       return c.json({
-        jwt
+        jwt: token,
+        userData: user
       })
       
     } catch (error) {
