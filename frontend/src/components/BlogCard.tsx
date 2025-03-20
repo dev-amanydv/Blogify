@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
+import { useUser } from "../hooks";
 
 interface BlogCradProps {
     id:string,
@@ -65,14 +66,16 @@ export const BlogCard = ({
       )}
 </div>
 }
-export function Avatar ({name,profilePic,size="small" }: {name:string,profilePic?:string, size?: "small" | "big"}){
-
+export function Avatar (){
+    const user = useUser()
+    const name = user.name || "Guest";
+    const profilePic = user.profilePic
     const shortName = name.split(" ");
     const name1 = shortName[0];
     const name2 = shortName[1];
     const nameAvatar =  name.includes(" ")? name1[0] + name2[0] : name[0]
 
-    return <div className={`relative inline-flex items-center justify-center ${size == "small"? "h-7 w-7": "h-10 w-10"} overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600`}>
+    return <div className={`relative inline-flex items-center justify-center h-10 w-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600`}>
      {profilePic ? (
         <img src={profilePic} alt={name} className="h-full w-full object-cover" />
       ) : (

@@ -29,8 +29,8 @@ userRouter.post('/signup',async (c) => {
     //zod and passwordhashing
     //const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${body.email}`;
     //const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${body.email}`;
-    const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=ay`;
-    const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=at`;
+    const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${body.name}`;
+    const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${body.name}`;
     const user = await prisma.user.create({
       data: {
         email: body.email,

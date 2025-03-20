@@ -16,11 +16,14 @@ export interface Blog {
 export const useBlog = ({id}: {id: string}) => {
     const [loading, setLoading] = useState(true);
     const [blog, setBlog] = useState<Blog>();
+    const getAuthToken = () => {
+        return sessionStorage.getItem("token") || localStorage.getItem("token");
+      };
 
     useEffect(()=> {
         axios.get(`${BACKEND_URL}/api/v1/blog/${id}`,{
             headers:{
-                Authorization : localStorage.getItem("token")
+                Authorization : getAuthToken()
             }
         }).then(response => {
                 setBlog(response.data.blog);
@@ -35,11 +38,14 @@ export const useBlog = ({id}: {id: string}) => {
 export const useBlogs = () => {
     const [loading, setLoading] = useState(true);
     const [blogs, setBlogs] = useState<Blog[]>([]);
+    const getAuthToken = () => {
+        return sessionStorage.getItem("token") || localStorage.getItem("token");
+      };
 
     useEffect(()=> {
         axios.get(`${BACKEND_URL}/api/v1/blog/bulk`,{
             headers:{
-                Authorization : localStorage.getItem("token")
+                Authorization :  getAuthToken()
             }
         }).then(response => {
                 setBlogs(response.data.blogs);
@@ -55,7 +61,7 @@ export const useUser = () => {
     const [user, setUser] = useState<{ name?: string; profilePic?: string }>({});;
   
     useEffect(() => {
-      const storedUser = localStorage.getItem("userData");
+      const storedUser = localStorage.getItem("userData") || sessionStorage.getItem("userData")
       if (storedUser) {
         setUser(JSON.parse(storedUser));
       }

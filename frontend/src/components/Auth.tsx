@@ -33,7 +33,10 @@ export const Auth = ({type}: {type: "Sign Up" | "Sign In"}) => {
             if (rememberMe){
                 localStorage.setItem("token","Bearer " + jwt);
                 localStorage.setItem("userData", JSON.stringify(userData ));
-            } else {sessionStorage.setItem("token","Bearer " + jwt);}
+            } else {sessionStorage.setItem("token","Bearer " + jwt);
+                sessionStorage.setItem("userData", JSON.stringify(userData ));
+
+            }
             setLoading(false);
             navigate("/blogs");
             return loading;
