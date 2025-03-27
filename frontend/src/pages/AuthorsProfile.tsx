@@ -3,7 +3,7 @@ import { useAuthorProfile } from "../hooks";
 import { Link, useParams } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import CoverPic from "../assets/coverpic.jpeg";
-import { AuthorAvatar, BlogCard } from "../components/BlogCard";
+import { BlogCard } from "../components/BlogCard";
 
 export default function AuthorsProfile() {
   const { id } = useParams();
