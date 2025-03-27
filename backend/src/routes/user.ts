@@ -93,4 +93,98 @@ userRouter.post('/signin',async (c) => {
     }
   
   } )
+userRouter.use('/profile', async (c, next) => {
+    //get the header 
+    //verify the header
+    //if header is correct, proceed
+    //extract authorId and pass down to route handler
+    const authHeader = c.req.header("authorization") || "";
+    //"Bearer token"
+    try {
+        const token = authHeader.split(" ")[1]
+    const user = await verify(token, c.env.JWT_SECRET);
+  
+    if (user){
+        //@ts-ignore
+        c.set("userId", user.id);
+      await next()
+    } else {
+      c.status(403)
+      return c.json({
+        error: "unauthorized"
+      })
+    }
+  
+    } catch (error) {
+        c.status(403);
+        return c.json({
+            error: "You are not logged in"
+        })
+    }
+    
+  })
+  userRouter.post('/profile', async (c) => {
+    const prisma = new PrismaClient({
+      datasourceUrl: c.env.DATABASE_URL
+    }).$extends(withAccelerate());
+
+    try {
+      const body = await  c.req.json();
+      const user = await prisma.user.update({
+        where: {
+          email: body.email,
+        },
+        data: {
+          bio: body.bio
+        }
+      });
+      
+      return c.json({
+        userData: user,
+        msg:"Updated"
+      })
+      
+    } catch (error) {
+      console.log(error);
+      c.status(411);
+      return c.json({
+        error: "Error updating profile"
+      })
+    }
+
+
+
+  })
+  userRouter.get('/:id', async (c) => {
+    const id = c.req.param("id");
+    const prisma = new PrismaClient({
+      datasourceUrl: c.env.DATABASE_URL,
+    }).$extends(withAccelerate());
+
+    try {
+      const user = await prisma.user.findFirst({
+        where: {
+          id: id
+        },
+        select:{
+          id: true,
+          email: true,
+          name: true,
+          bio: true,
+          userCreatedTime:true,
+          profilePic: true,
+          gender: true
+        }
+      })
+
+      return c.json({
+        userDetails: user
+      })
+
+    } catch (error) {
+      console.log(error);
+      c.status(411);
+      return 
+    }
+  })
   

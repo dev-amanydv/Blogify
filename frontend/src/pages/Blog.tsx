@@ -9,9 +9,9 @@ export const Blog = () => {
     const { loading, blog } = useBlog({id : id || ""});
     if(loading || !blog){
         return <div>
-                        <Appbar/>
+     <Appbar/>
 
-             <div className="w-screen h-screen flex items-center justify-center ">
+    <div className="w-screen h-screen flex items-center justify-center ">
         <div>
             <span className="loading loading-ring loading-xs"></span>
             <span className="loading loading-ring loading-sm"></span>

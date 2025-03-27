@@ -166,6 +166,10 @@ export const blogRouter = new Hono<{
                 id: true,
                 author: {
                     select: {
+                        id:true,
+                        bio:true,
+                        email:true,
+                        gender:true,
                         name: true,
                         profilePic: true
                     }

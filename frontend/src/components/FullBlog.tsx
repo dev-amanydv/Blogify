@@ -1,12 +1,19 @@
+import { Link } from "react-router-dom";
 import { Blog } from "../hooks";
 import { Appbar } from "./Appbar";
 import { AuthorAvatar} from "./BlogCard";
 import {  format } from "date-fns";
+import { useEffect, useState } from "react";
 
 
 export const FullBlog = ({ blog }: { blog: Blog }) => {
   const formattedDate = format(new Date(blog.blogCreatedTime), "d MMM yyyy");     
-
+  console.log("author id is :",blog.author.id);
+  useEffect(()=>{
+    if (blog.id) {
+      sessionStorage.setItem("lastBlogId", blog.id);
+    }
+  },[])
   return (
     <div>
       <Appbar />
@@ -24,7 +31,7 @@ export const FullBlog = ({ blog }: { blog: Blog }) => {
                 </div>
                 <div className="flex flex-row sm:flex-row w-full items-center sm:items-start">
                     <div className="pr-4 inline-block  ">
-                        <AuthorAvatar size={"big"} profilePic={blog.author.profilePic} name={blog.author.name || "Anonymous"}/>
+                        <Link to={`/authorsprofile/${blog.author.id}`}><AuthorAvatar size={"big"} profilePic={blog.author.profilePic} name={blog.author.name || "Anonymous"}/></Link>
                     </div>
 
                     <div>

@@ -8,9 +8,21 @@ export interface Blog {
             "id": string,
             "author": {
                 "name": string,
-                "profilePic": string
+                "profilePic": string,
+                "bio": string,
+                "id": string
             },
             "blogCreatedTime": string
+}
+export interface Author {
+    "name": string,
+    "email": string,
+    "id": string,
+    "gender": string,
+    "userCreatedTime": string,
+    "bio": string,
+    "profilePic": string,
+    "blogCreatedTime": string
 }
 
 export const useBlog = ({id}: {id: string}) => {
@@ -66,7 +78,38 @@ export const useUser = () => {
         setUser(JSON.parse(storedUser));
       }
     }, []);
+
   
     return user;
   };
+
+
+  export const useAuthorProfile =  ({id}: {id:string})=> {
+    const [loading, setLoading] = useState(false)
+    const [author, setAuthor] = useState<Author>();
+    const getAuthToken = () => {
+        return sessionStorage.getItem("token") || localStorage.getItem("token");
+      };
+
+      useEffect(() => {
+        const fetchAuthor = async () => {
+            setLoading(true);
+            try {
+                const response = await axios.get(`${BACKEND_URL}/api/v1/user/${id}`, {
+                    headers: { Authorization: getAuthToken() }
+                });
+                console.log("API Response:", response.data);
+                setAuthor(response.data.userDetails);  // Adjust if necessary
+            } catch (error) {
+                console.error("Error fetching author:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+    
+        fetchAuthor();
+    }, [id]);
+
+    return {loading, author}
+  }
   

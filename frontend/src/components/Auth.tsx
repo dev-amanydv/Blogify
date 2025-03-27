@@ -93,7 +93,7 @@ export const Auth = ({type}: {type: "Sign Up" | "Sign In"}) => {
                     <Checkbox checked={rememberMe} onClick={handleRememberMe} {...label} />
                         Remember Me
                 </div>
-                <button onClick={sendRequest} type="button" className=" mt-6 w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none
+                <button disabled={loading} onClick={sendRequest} type="button" className=" mt-6 w-full text-white bg-gray-800 hover:bg-gray-900 focus:outline-none
                  focus:ring-4 focus:ring-gray-300  font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">{type == "Sign Up" ? "Sign Up": "Sign In"}</button>
 
             </div>

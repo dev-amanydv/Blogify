@@ -77,7 +77,7 @@ export function Avatar (){
 
     return <div className={`relative inline-flex items-center justify-center h-10 w-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600`}>
      {profilePic ? (
-        <img src={profilePic} alt={name} className="h-full w-full object-cover" />
+        <img  src={profilePic} alt={name} className="h-full w-full object-cover" />
       ) : (
         <span className="font-medium text-xs text-gray-600 dark:text-gray-300">
           {nameAvatar.toUpperCase()}
