@@ -1,16 +1,9 @@
 import { Appbar } from "../components/Appbar";
-import { useAuthorProfile, useBlog } from "../hooks";
+import { useAuthorProfile} from "../hooks";
 import { Link, useParams } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import  CoverPic  from "../assets/coverpic.jpeg"
-interface BlogCradProps {
-  id:string,
-  authorName:  string,
-  title: string,
-  content: string,
-  blogCreatedTime: string,
-  
-}
+
 
 
 

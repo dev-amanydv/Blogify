@@ -1,5 +1,4 @@
 import { Appbar } from "../components/Appbar"
-import { useUser } from "../hooks"
 
 export default  function Profile (){
 

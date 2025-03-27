@@ -3,7 +3,7 @@ import { Blog } from "../hooks";
 import { Appbar } from "./Appbar";
 import { AuthorAvatar} from "./BlogCard";
 import {  format } from "date-fns";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 
 
 export const FullBlog = ({ blog }: { blog: Blog }) => {
