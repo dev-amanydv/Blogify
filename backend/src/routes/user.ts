@@ -173,7 +173,8 @@ userRouter.use('/profile', async (c, next) => {
           bio: true,
           userCreatedTime:true,
           profilePic: true,
-          gender: true
+          gender: true,
+          blogs: true
         }
       })
 

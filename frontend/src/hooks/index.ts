@@ -22,7 +22,13 @@ export interface Author {
     "userCreatedTime": string,
     "bio": string,
     "profilePic": string,
-    "blogCreatedTime": string
+    "blogs": {
+        "id":string,
+        "title": string,
+        "content": string,
+        "authorId": string,
+        "blogCreatedTime": string,
+    }[];
 }
 
 export const useBlog = ({id}: {id: string}) => {

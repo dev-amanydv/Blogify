@@ -4,6 +4,7 @@ import { Appbar } from "./Appbar";
 import { AuthorAvatar} from "./BlogCard";
 import {  format } from "date-fns";
 import { useEffect} from "react";
+import { IoArrowBack } from "react-icons/io5";
 
 
 export const FullBlog = ({ blog }: { blog: Blog }) => {
@@ -17,7 +18,13 @@ export const FullBlog = ({ blog }: { blog: Blog }) => {
   return (
     <div>
       <Appbar />
+      <div className="text-4xl flex ml-3 mt-2 text-gray-600 items-center">
+                    <Link to={`/blogs`}>
+                      <IoArrowBack />
+                    </Link>
+                  </div>
       <div className="flex justify-center">
+ 
         <div className="grid gap-10 grid-cols-12 px-6 w-full pt-12 max-w-screen-2xl">
           <div className="col-span-12 sm:col-span-8">
               <div className="text-5xl font-extrabold"> {blog.title} </div>
