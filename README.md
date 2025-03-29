@@ -31,8 +31,24 @@ Check out the live version: [Live App](https://blogify-xi-seven.vercel.app/)
 ## 🚀 Getting Started  
 
 ### 1️⃣ Clone the Repository  
+Step-1: Navigate to frontend folder and start server.
 ```sh
 git clone https://github.com/your-username/blogify.git  
 cd blogify
 cd frontend
 npm run dev
+```
+Step-2: Get yourself a postgresQl DATABASE_URL.
+
+Step-3: Set DATABASE_URL and JWT_SECRET in wrangler.jsonc.
+
+Step-4: Navigate to backend folder and start server in another terminal.
+```sh
+cd blogify
+cd backend
+wrangler dev
+```
+Step-5: Open http://localhost:8787 in your browser.
+
+
+
