@@ -13,10 +13,13 @@
 - 🚀 **Fast & Scalable** – Optimized for performance with a robust backend.
 
 ## 🌍 Live Demo
-Check out the live version: [Live App](https://textform-analyze-your-text.vercel.app/)
+Check out the live version: [Live App]([https://textform-analyze-your-text.vercel.app](https://blogify-xi-seven.vercel.app/)/)
 
 ## 📸 Screenshots
-![Image](https://github.com/user-attachments/assets/b6514336-f1b3-4d0f-b594-09bd83c20414)
+<img width="1440" alt="Image" src="https://github.com/user-attachments/assets/b0db302b-460b-48e2-84ca-fd3ad5804a98" />
+<img width="1434" alt="Image" src="https://github.com/user-attachments/assets/2b91102b-229f-4bac-b14d-fd2154ed1dcd" />
+
+![Image](https://github.com/user-attachments/assets/1a1bb607-3f33-4538-8809-783db7c03103)
 
 ## 🛠 Tech Stack  
 
