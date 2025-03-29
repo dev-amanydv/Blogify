@@ -18,8 +18,8 @@ Check out the live version: [Live App](https://blogify-xi-seven.vercel.app/)
 ## 📸 Screenshots
 <img width="1440" alt="Image" src="https://github.com/user-attachments/assets/b0db302b-460b-48e2-84ca-fd3ad5804a98" />
 <img width="1434" alt="Image" src="https://github.com/user-attachments/assets/2b91102b-229f-4bac-b14d-fd2154ed1dcd" />
+<img width="720" alt="Image" src="https://github.com/user-attachments/assets/1a1bb607-3f33-4538-8809-783db7c03103" />
 
-![Image](https://github.com/user-attachments/assets/1a1bb607-3f33-4538-8809-783db7c03103)
 
 ## 🛠 Tech Stack  
 
