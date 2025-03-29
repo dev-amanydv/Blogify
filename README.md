@@ -10,7 +10,13 @@
 - 📂 **Category & Tag Management** – Organize your content efficiently.  
 - 👥 **User Authentication** – Secure login system for authors and readers.  
 - 📊 **Analytics Integration** – Track visitor engagement and performance.  
-- 🚀 **Fast & Scalable** – Optimized for performance with a robust backend.  
+- 🚀 **Fast & Scalable** – Optimized for performance with a robust backend.
+
+## 🌍 Live Demo
+Check out the live version: [Live App](https://textform-analyze-your-text.vercel.app/)
+
+## 📸 Screenshots
+![Image](https://github.com/user-attachments/assets/b6514336-f1b3-4d0f-b594-09bd83c20414)
 
 ## 🛠 Tech Stack  
 
