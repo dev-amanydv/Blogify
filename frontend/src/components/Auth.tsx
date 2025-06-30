@@ -29,12 +29,15 @@ export const Auth = ({type}: {type: "Sign Up" | "Sign In"}) => {
     });
 
 async function sendRequest() {
-  const parseResult = AuthSchema.safeParse(postInputs);
+if (type == "Sign Up"){
+const parseResult = AuthSchema.safeParse(postInputs);
   if (!parseResult.success) {
     const issues = parseResult.error.issues;
     setError(issues[0]?.message || "Invalid input");
     return;
   }
+}
+  
   try {
     console.log("Sending request");
     setLoading(true);
