@@ -16,9 +16,14 @@
 Check out the live version: [Live App](https://ink-wave-ten.vercel.app/)
 
 ## 📸 Screenshots
-<img width="1440" alt="Image" src="https://github.com/user-attachments/assets/b0db302b-460b-48e2-84ca-fd3ad5804a98" />
-<img width="1434" alt="Image" src="https://github.com/user-attachments/assets/2b91102b-229f-4bac-b14d-fd2154ed1dcd" />
-<img width="720" alt="Image" src="https://github.com/user-attachments/assets/1a1bb607-3f33-4538-8809-783db7c03103" />
+| LandingPage | AuthPage |
+|------|----------|
+|<img width="1440" alt="Image" src="https://github.com/user-attachments/assets/258cb97e-c028-490d-9f5c-a59aa5a65468" /> |<img width="1440" alt="Image" src="https://github.com/user-attachments/assets/5ed6ba40-7e3e-4dff-93ed-863c15baa65b" /> 
+
+| HomePage | MyArticles |
+|------|----------|
+|<img width="1440" alt="Image" src="https://github.com/user-attachments/assets/578b62d4-814a-45d0-bfc1-351edc2d2aa2" /> |<img width="1440" alt="Image" src="https://github.com/user-attachments/assets/1c75633f-bfa9-44c9-9a19-90998fb32aec" />
+
 
 
 ## 🛠 Tech Stack  
