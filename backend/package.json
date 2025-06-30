@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "build": "prisma generate && wrangler deploy --dry-run"
+  },
+  "dependencies": {
+    "@amanhere/medium-common": "^1.0.0",
+    "@prisma/client": "^6.10.1",
+    "@prisma/extension-accelerate": "^1.2.2",
+    "date-fns": "^4.1.0",
+    "hono": "^4.7.4",
+    "openssl": "^2.0.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250214.0",
+    "prisma": "^6.10.1",
+    "wrangler": "^4.0.0"
+  }
+}
