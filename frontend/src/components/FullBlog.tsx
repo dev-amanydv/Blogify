@@ -18,16 +18,16 @@ export const FullBlog = ({ blog }: { blog: Blog }) => {
   return (
     <div>
       <Appbar />
-      <div className="text-4xl flex ml-3 mt-2 text-gray-600 items-center">
+      <div className="text-4xl flex ml-3 md:ml-24 mt-5 text-gray-600 items-center">
                     <Link to={`/blogs`}>
                       <IoArrowBack />
                     </Link>
                   </div>
       <div className="flex justify-center">
  
-        <div className="grid gap-10 grid-cols-12 px-6 w-full pt-12 max-w-screen-2xl">
-          <div className="col-span-12 sm:col-span-8">
-              <div className="text-5xl font-extrabold"> {blog.title} </div>
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-12 px-4 sm:px-6 w-full pt-8 sm:pt-12 max-w-screen-xl">
+          <div className="col-span-12 max-w-sm md:max-w-4xl sm:col-span-8">
+              <div className="text-3xl md:text-5xl font-extrabold"> {blog.title} </div>
               <div className="text-slate-500 pt-2">Posted on {formattedDate}</div>
               <div className="text-md font-light pt-5">{blog.content}</div>
           </div>

@@ -8,7 +8,7 @@ import logo from "../assets/inkwave.svg";
 import paper_plane_light from "../assets/paper-plane-black.svg";
 import feat_bg from "../assets/feat-bg.svg"
 import bg_1 from "../assets/bg-1.svg"
-import hero from "../assets/hero-2.svg"
+import hero from "../assets/hero-5.svg"
 import { IoCreate } from "react-icons/io5";
 import { CiSaveDown2 } from "react-icons/ci";
 import { RiUserCommunityFill } from "react-icons/ri";
@@ -18,7 +18,7 @@ export default function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-contain bg-no-repeat  w-full" style={{ backgroundImage: `url(${bg_1})` }}>
+    <div className="min-h-screen bg-auto md:bg-contain bg-no-repeat  w-full" style={{ backgroundImage: `url(${bg_1})` }}>
       <div className="z-50">
         {/* Navigation */}
       <motion.nav
@@ -37,12 +37,12 @@ export default function LandingPage() {
           >
             Sign In
           </button>
-          <Button
+          <button
             onClick={() => navigate("/signup")}
-            className="bg-gradient-to-r text-white from-black via-gray-800 to-black hover:shadow-lg"
+            className="bg-gradient-to-r text-md px-2 py-2 md:px-4 md:py-2 rounded-xl text-white from-black via-gray-800 to-black hover:shadow-lg"
           >
             Get Started
-          </Button>
+          </button>
         </div>
       </motion.nav>
 

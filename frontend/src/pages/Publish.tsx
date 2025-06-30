@@ -152,7 +152,7 @@ export default function Publish() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center justify-between mb-8"
+                    className="flex flex-col gap-5 sm:flex-row items-center justify-between mb-8"
                 >
                     <div>
                         <h1 className="text-2xl font-bold text-gray-900">Write New Article</h1>
@@ -164,13 +164,6 @@ export default function Publish() {
                     </div>
                     
                     <div className="flex items-center space-x-3">
-                        <button
-                            onClick={handlePreview}
-                            className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-gray-200 rounded-lg transition-colors"
-                        >
-                            <IoEyeOutline className="w-4 h-4" />
-                            <span>Preview</span>
-                        </button>
                         
                         <button
                             onClick={() => handleSaveDraft(false)}
