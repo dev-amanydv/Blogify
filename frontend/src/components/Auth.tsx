@@ -5,7 +5,7 @@ import  axios  from "axios"
 import { BACKEND_URL } from "../Config"
 import { Gender } from "./Gender"
 import Checkbox from '@mui/material/Checkbox';
-
+import { z } from "zod";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -20,7 +20,21 @@ export const Auth = ({type}: {type: "Sign Up" | "Sign In"}) => {
         password: "",
         gender: ""
     })
+
+    const AuthSchema = z.object({
+      name: z.string().min(2, "Name is required").optional(),
+      email: z.string().email("Invalid email"),
+      password: z.string().min(6, "Password must be at least 6 characters"),
+      gender: z.string().optional()
+    });
+
 async function sendRequest() {
+  const parseResult = AuthSchema.safeParse(postInputs);
+  if (!parseResult.success) {
+    const issues = parseResult.error.issues;
+    setError(issues[0]?.message || "Invalid input");
+    return;
+  }
   try {
     console.log("Sending request");
     setLoading(true);
