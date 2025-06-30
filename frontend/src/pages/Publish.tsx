@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BACKEND_URL } from "../Config";
 import toast from "react-hot-toast";
-import { IoSaveOutline, IoEyeOutline, IoSendOutline } from "react-icons/io5";
+import { IoSaveOutline, IoSendOutline } from "react-icons/io5";
 
 export default function Publish() {
     const [title, setTitle] = useState("");
@@ -132,16 +132,6 @@ export default function Publish() {
         }
     };
 
-    const handlePreview = () => {
-        if (!title.trim() && !content.trim()) {
-            toast.error("Nothing to preview yet");
-            return;
-        }
-        
-        // Save to localStorage for preview
-        localStorage.setItem('previewBlog', JSON.stringify({ title, content }));
-        window.open('/preview', '_blank');
-    };
 
     return (
         <div className="min-h-screen bg-gray-50">
